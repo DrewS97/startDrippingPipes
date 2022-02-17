@@ -1,4 +1,4 @@
-import requests, os, weather
+import requests, os
 from dotenv import load_dotenv
 from pprint import pprint
 load_dotenv()
@@ -24,7 +24,7 @@ def checkTemps():
             continue
 
 def getLowestTemp():
-    low = 100
+    low = 1000
     for x in range(24):
         temp = data['hourly'][x]['temp']
         if temp < low:
