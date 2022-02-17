@@ -3,14 +3,22 @@ from dotenv import load_dotenv
 from pprint import pprint
 load_dotenv()
 
-city = os.environ.get('CITY')
-state = os.environ.get('STATE')
+lat = os.environ.get('LAT')
+lon = os.environ.get('LON')
 key = os.environ.get('WEATHER_API_KEY')
+part = "current,minutely,daily,alerts"
 
-url = f" http://pro.openweathermap.org/data/2.5/forecast/hourly?q={city},{state}&appid={key}&units=imperial"
+url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={key}&units=imperial"
 
 req = requests.get(url)
 
 data = req.json()
 
-pprint(data)
+def checkTemps():
+    for x in range(24):
+        temp = data['hourly'][x]['temp']
+        print(temp)
+        if temp <= 18:
+            return True
+        else:
+            continue
