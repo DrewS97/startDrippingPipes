@@ -15,6 +15,6 @@ def sendMessage():
                     .create(
                         body="It's going to be cold in the next 24 hours. Remember to drip your faucets!",
                         from_= os.environ.get('FROM'),
-                        to='(217) 232-4238',
+                        to= os.environ.get('TO1'),
                     )
 
